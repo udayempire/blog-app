@@ -3,7 +3,7 @@
     "zod": "^3.23.8"
   },
   "name": "@udayempire/blog-common",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "devDependencies": {},
   "scripts": {

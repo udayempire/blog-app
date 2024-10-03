@@ -30,18 +30,4 @@ app.use('api/v1/blog/*',async (c,next)=>{
 
 })
 
-
-
-app.post('/api/v1/blog', (c) => {
-  return c.text("Hello world")
-})
-
-app.put("api/v1/blog", (c) => {
-  return c.text("Helo world")
-})
-
-app.get("api/v1/blog/:id", (c) => {
-  return c.text("Hellow World")
-})
-
 export default app
