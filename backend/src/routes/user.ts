@@ -2,12 +2,12 @@ import { withAccelerate } from "@prisma/extension-accelerate";
 import { PrismaClient } from "@prisma/client/edge";
 import { Hono } from "hono";
 import { sign, verify } from "hono/jwt"
-import { signupInput,signinInput } from "@udayempire/blog-common";
+import { signupInput, signinInput } from "@udayempire/blog-common";
 
 export const userRouter = new Hono<{
-    Bindings:{
-        DATABASE_URL:string;
-        JWT_SECRET:string
+    Bindings: {
+        DATABASE_URL: string;
+        JWT_SECRET: string
     }
 }>;
 
@@ -20,10 +20,10 @@ userRouter.post('/signup', async (c) => {
     const body = await c.req.json();
     const { success } = signupInput.safeParse(body)
 
-    if(!success){
+    if (!success) {
         // c.status(411),
         return c.json({
-            message:"Inputs not correct"
+            message: "Inputs not correct"
         })
     }
 
@@ -49,8 +49,8 @@ userRouter.post('/signin', async (c) => {
 
     const body = await c.req.json();
     const success = signinInput.safeParse(body)
-    if(!success){
-        return c.json({message:"wrong inputs"})
+    if (!success) {
+        return c.json({ message: "wrong inputs" })
     }
     try {
         const user = await prisma.user.findUnique({
