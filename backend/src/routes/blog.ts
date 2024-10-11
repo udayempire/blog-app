@@ -16,7 +16,7 @@ export const blogRouter = new Hono<{
 }>();
 //Middleware
 blogRouter.use("/*", async (c, next) => {
-    const authHeader = c.req.header("authorization") || "" // this ("")means that if user doesnt give any authorization so its becomes undefined so to avoid that we put "" to define it as string. 
+    const authHeader = c.req.header("Authorization") || "" // this ("")means that if user doesnt give any authorization so its becomes undefined so to avoid that we put "" to define it as string. 
     const token = authHeader.split(" ")[1]
     const payload = await verify(token, c.env.JWT_SECRET)
     if (!payload) {
@@ -106,7 +106,18 @@ blogRouter.get("/bulk", async (c)=>{
     }).$extends(withAccelerate())
 
     try{
-        const blog = await prisma.blog.findMany()
+        const blog = await prisma.blog.findMany({
+            select:{
+                title:true,
+                content:true,
+                id:true,
+                author:{
+                    select:{
+                        name:true
+                    }
+                }
+            }
+        })
 
     return c.json({
         blog
