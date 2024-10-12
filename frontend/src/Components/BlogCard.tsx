@@ -8,7 +8,7 @@ export const BlogCard = ({ authorName, title, content, publishedDate }: BlogCard
     return <div className=" p-4 border-b border-slate-500 pb-4">
         <div className="flex items-center gap-2 pt-2">
             <div className="flex  items-center ">
-                <Avatar size="small" name={"Uday"} />
+                <Avatar size="small" name={authorName.toUpperCase()} />
             </div>
             <div className="font-extralight ">{authorName}</div>
             <div ><Circle/></div>
