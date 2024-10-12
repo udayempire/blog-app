@@ -1,7 +1,7 @@
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { PrismaClient } from "@prisma/client/edge";
 import { Hono } from "hono"
-import { verify,decode } from "hono/jwt"
+import { verify } from "hono/jwt"
 import { createBlog,updateBlog } from "@udayempire/blog-common"
 
 export const blogRouter = new Hono<{
@@ -106,7 +106,7 @@ blogRouter.get("/bulk", async (c)=>{
     }).$extends(withAccelerate())
 
     try{
-        const blog = await prisma.blog.findMany({
+        const blogs = await prisma.blog.findMany({
             select:{
                 title:true,
                 content:true,
@@ -120,7 +120,7 @@ blogRouter.get("/bulk", async (c)=>{
         })
 
     return c.json({
-        blog
+        blogs
     })}catch(e){
         c.status(411);
         return c.json({error:"Error while feching posts,Please Hold for a while"})

@@ -15,7 +15,6 @@ export const Blogs = () => {
         <Appbar/>
         <div className="flex justify-center mt-2">
             <div className="max-w-xl">
-                
                 {blogs.map(blog=><BlogCard
                     authorName={blog.author.name || "Anonmonyous"}
                     title={blog.title}
