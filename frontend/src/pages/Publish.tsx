@@ -27,7 +27,7 @@ export const Publish = () => {
                         Authorization: localStorage.getItem("token")
                     }
                 });
-                navigate(`blog/get/${response.data.id}`)
+                navigate(`/blog/get/${response.data.id}`)
             }} type="button" className="text-white bg-green-700 hover:bg-green-800  font-medium rounded-full text-sm px-10 py-2 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 mt-4">Publish</button>
         </div>
 
