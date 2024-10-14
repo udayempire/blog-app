@@ -1,4 +1,4 @@
-export const BlogSkeleton = () => {
+export const BlogSkeletonHome = () => {
     return <div role="status" className="max-w-sm animate-pulse">
         <div className=" p-4 pb-4 cursor-pointer w-screen max-w-screen-md">
             <div className="flex items-center gap-2 pt-2">
